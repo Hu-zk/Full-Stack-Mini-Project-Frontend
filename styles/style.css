@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background: url("assets/back.jpg") center no-repeat;
+  background: url("../assets/back.jpg") center no-repeat;
   background-size: cover;
 }
 
