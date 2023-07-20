@@ -23,23 +23,25 @@
         <div class="form-block">
 
 
-            <div class="title-bar text-center">Create an account</div>
+            <div class="title-bar text-center">
+                Create an account
+            </div>
 
-            <form class="form-box">
+            <form id="form" class="form-box">
 
                 <div class="form-input">
 
-                    <input type="text" placeholder="Full Name" tabindex="10">
+                    <input id="username" type="text" placeholder="Full Name" tabindex="10">
                 </div>
 
                 <div class="form-input">
 
-                    <input type="email" placeholder="Email Address" tabindex="10">
+                    <input id="email" type="email" placeholder="Email Address" tabindex="10">
                 </div>
 
                 <div class="form-input">
 
-                    <input type="password" placeholder="Password">
+                    <input id="password" type="password" placeholder="Password">
                 </div>
 
                 <div class="col-12 px-0 text-right">
@@ -60,6 +62,9 @@
         </div>
 
     </div>
+    <script src="scripts/script.js"></script>
+    <script>pages.loadFor("register")</script>
+
 </body>
 
 </html>
