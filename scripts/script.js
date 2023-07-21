@@ -9,6 +9,8 @@ pages.print_message = (message) =>{
 pages.getAPI = async (url) =>{
     try{
         return await fetch(url)
+        .then(res => res.json())
+        .then(api_data => console.log('Response from API:'+ api_data))
     }catch(error){
         pages.print_message("Error from GET API: " + error)
     }
