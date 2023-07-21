@@ -4,6 +4,31 @@ body {
   background-size: cover;
 }
 
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #fff;
+  background-color: #242424;
+  font-family: sans-serif;
+  padding: 1.5em;
+  font-weight: 800;
+  border-radius: 15px;
+  text-align: center;
+}
+
+a {
+  color: white;
+  font-weight: 900;
+  text-decoration: none;
+  padding: 0.5em;
+  background-color: #242424;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -74,7 +99,8 @@ button[type="submit"] {
   font-weight: 700;
 }
 
-.all-link:hover {
+.all-link:hover,
+a:hover {
   color: grey;
 }
 

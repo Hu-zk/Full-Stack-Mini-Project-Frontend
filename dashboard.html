@@ -8,13 +8,19 @@
     <title>Home</title>
 </head>
 
-<body>
+<body class="dashboard-container">
 
-    <h1>Welcome</h1>
-
+    <h1>Welcome, <span id="username"></span>!</h1>
+    <a href="login.html">return</a>
 
     <script src="scripts/script.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get("username");
 
+        const userNameElement = document.getElementById("username");
+        userNameElement.textContent = userName;
+    </script>
 </body>
 
 </html>

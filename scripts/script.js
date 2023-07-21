@@ -25,10 +25,13 @@ pages.postAPI = async (api_url, api_data) => {
             },
             body: JSON.stringify(api_data)
         })
-        .then(res => res.json())
-        .then(api_data => console.log('Response from API:'+ api_data))
-
-
+        .then(res =>{
+            return res.json()
+        } )
+        .then(api_data => {
+            return api_data
+        })
+    
     }catch(error){
         pages.print_message("Error from Linking (POST) " + error)
     }
@@ -49,17 +52,27 @@ pages.submit = (page) => {
 pages.page_register = async (data) => {
     console.log("i am in register")
     const register_url = pages.base_url + "register.php"
-    console.log(data)
     const response = await pages.postAPI(register_url,data)
-    console.log(response)
+    
+    if (response.status === "success") {
+        console.log("Account added successfully")
+        window.location.href = `login.html`;
+    }else{
+        console.log(response.message)
+    }
     
 }
 
 pages.page_login = async (data) => {
     console.log("i am in login")
     const login_url = pages.base_url + "login.php"
-    console.log(data)
     const response = await pages.postAPI(login_url,data)
+    if (response.status === "logged in") {
+        console.log(response.status)
+        window.location.href = `dashboard.html?username=${response.username}`;
+    }else{
+        console.log(response.message)
+    }
 }
 
 pages.loadFor = (page,data) => {
