@@ -22,12 +22,12 @@
                 <div class="col-12 mb-2 form-input">
 
                     <label class="sr-only" for="email">Email address</label>
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input name="email" type="email" id="email" placeholder="Email Address" required>
                 </div>
                 <div class="col-12 form-input">
 
                     <label class="sr-only" for="password">Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input name="password" type="password" placeholder="Password" id="password">
                 </div>
 
                 <div class="col-12 ">
@@ -51,7 +51,8 @@
     </div>
 
     <script src="scripts/script.js"></script>
-    <script>pages.loadFor("login")</script>
+
+    <script>pages.submit("login")</script>
 
 
 </body>

@@ -16,46 +16,50 @@ pages.getAPI = async (url) =>{
 
 pages.postAPI = async (api_url, api_data) => {
     try{
-        return await axios.post(
-            api_url,
-            api_data
-        );
+        return await fetch(api_url,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(api_data)
+        })
+        .then(res => res.json())
+        .then(api_data => console.log('Response from API:'+ api_data))
+
+
     }catch(error){
-        pages.print_message("Error from Linking (POST)" + error)
+        pages.print_message("Error from Linking (POST) " + error)
     }
 }
 
-pages.page_register = async () => {
+
+pages.submit = (page) => {
+    const form = document.getElementById("form")
+    form.addEventListener('submit', event => {
+        console.log("i am in submit")
+        event.preventDefault()
+        const form_data = new FormData(form)
+        const data = Object.fromEntries(form_data)
+        pages.loadFor(page,data)
+    })
+}
+
+pages.page_register = async (data) => {
+    console.log("i am in register")
     const register_url = pages.base_url + "register.php"
-    const username = document.getElementById("username").val
-    const email = document.getElementById("email").val
-    const password = document.getElementById("password").val
-    const data = [['username']=username,['email']=email,['password']=password]
+    console.log(data)
     const response = await pages.postAPI(register_url,data)
+    console.log(response)
     
 }
 
-pages.page_login = async () => {
+pages.page_login = async (data) => {
+    console.log("i am in login")
     const login_url = pages.base_url + "login.php"
-    const email = document.getElementById("email").val
-    const password = document.getElementById("password").val
-    const data = [['email']=email,['password']=password]
-    const response = await pages.getAPI(login_url,data)
+    console.log(data)
+    const response = await pages.postAPI(login_url,data)
 }
 
-pages.page_articles = () => {
-    const articles_url = pages.base_url + "get_articles.php";
-    pages.print_message("Hello Artciles from JS")
+pages.loadFor = (page,data) => {
+    eval("pages.page_" + page + "(" + JSON.stringify(data) + ");");
 }
-
-
-//this will load the scripts of the mentioned page
-pages.loadFor = (page) => {
-    eval("pages.page_" + page + "();")
-}
-
-
-
-
-
-

@@ -31,17 +31,17 @@
 
                 <div class="form-input">
 
-                    <input id="username" type="text" placeholder="Full Name" tabindex="10">
+                    <input id="username" name="username" type="text" placeholder="Full Name" tabindex="10">
                 </div>
 
                 <div class="form-input">
 
-                    <input id="email" type="email" placeholder="Email Address" tabindex="10">
+                    <input id="email" name="email" type="email" placeholder="Email Address" tabindex="10">
                 </div>
 
                 <div class="form-input">
 
-                    <input id="password" type="password" placeholder="Password">
+                    <input id="password" name="password" type="password" placeholder="Password">
                 </div>
 
                 <div class="col-12 px-0 text-right">
@@ -63,7 +63,8 @@
 
     </div>
     <script src="scripts/script.js"></script>
-    <script>pages.loadFor("register")</script>
+
+    <script>pages.submit("register")</script>
 
 </body>
 
